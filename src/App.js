@@ -20,6 +20,18 @@ function ExampleNotificationHeader() {
 // all class components MUST extend "React.component"
 class App extends React.Component  {
 
+  // Step 5-2: To create a state, we must call the constructor method, which has "props" passed into it.
+  constructor(props) {
+    // Step: 5-2: We must called the "super" method to initialize the base component and pass in the "props" variable.
+    super(props);
+
+    // Step: 5-2: React.Component has a "state" variable setup. In this component, we must define its structure and the properties in the state.
+    // In this case, we are creating a state whether to show or hide the notification we create in Step 4. By default it is hidden.
+    this.state = {
+      showNotification: false
+    }
+  }
+
   // Step 5-1: When using class components, we MUST call the "render" method and return the HTML code to be displayed
   render() {
     return (
