@@ -9,7 +9,8 @@ export function Header() {
   return (
     // step 2-2: Utilize existing classes to style HTML elements in React. Remember to user "className" as opposed to "class"
     <header className="flex row space-between-center">
-      <div>
+      {/* step 2-3: Add an example of how to do inline styling in React */}
+      <div style={{fontSize: '1.5rem', fontWeight: '600'}}>
         John Deere Training
       </div>
       <div>
