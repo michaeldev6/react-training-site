@@ -7,7 +7,8 @@ export function Header() {
 
   // Step 1-3: Functional components should always return HTML code.
   return (
-    <header>
+    // step 2-2: Utilize existing classes to style HTML elements in React. Remember to user "className" as opposed to "class"
+    <header className="flex row space-between-center">
       <div>
         John Deere Training
       </div>
