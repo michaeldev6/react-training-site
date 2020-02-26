@@ -6,8 +6,8 @@ import {Header} from "./components/Header";
 
 function App() {
   return (
-    // step 1-4: Declare the Header component like you would any HTML tag to have it be rendered on the page
-    <Header />
+    // step 3-1: Add properties "name" and "onButtonClick", passing a string into "name" and a function into "onButtonClick"
+    <Header name="John Deere Training" onButtonClick={(e) => alert('Button Clicked')} />
   );
 }
 
