@@ -10,9 +10,47 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Step 2-1: Add some styling to the main body of the app */
+  color: #333;
+  background-color: #ddd;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+/* Step 2-1: Create style rules for html header and button elements */
+header {
+  background-color: #666;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  width: 100%;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Step 2-1: Create some baseline classes to user throughout the app */
+/*===========================================
+  FLEX LAYOUT STYLES
+===========================================*/
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.space-between-center {
+  justify-content: space-between;
+  align-items: center;
 }
