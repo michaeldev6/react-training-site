@@ -54,3 +54,25 @@ button {
   justify-content: space-between;
   align-items: center;
 }
+
+
+/* Step 4-2: Setup styles to be used for the Notification component */
+.notification {
+  background-color: #ccc;
+  border: 0.0625rem solid #888;
+  border-radius: 0.25rem;
+  color: #333;
+  font-size: 0.75rem;
+  max-width: 31.25rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.notification .notification-header {
+  border-bottom: 0.0625rem solid rgba(0,0,0,0.5);
+  font-weight: 600;
+  padding: 0 1rem 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  width: calc(100% + 2rem);
+  margin-left: -1rem;
+}
