@@ -61,15 +61,15 @@ class App extends React.Component  {
           {/* Step 5-4: Use appropriate text based on the visibility state of the notification */}
           {this.state.showNotification ? 'Hide Notification' : 'Show Notification'}
         </button>
-        {/*
-      Step 4-3: Added the Notification component, passing in the "ExampleNotificationHeader" component to the "header" prop.
-      Also set the "notificationStyle" prop to use the "notificationStyles.info" styles.
-      */}
-        <Notification header={<ExampleNotificationHeader />} notificationStyle={notificationStyles.info}>
-          {/* Step 4-3: Any content placed between the <Notification> tags, will be passed down into the component in the "props.children" property */}
-          <p>Notification Custom Content</p>
-          <p>More Custom Content</p>
-        </Notification>
+        {/* Step 5-5: Added a check to see if the Notification component should be rendered or not */}
+        {
+          this.state.showNotification &&
+          <Notification header={<ExampleNotificationHeader />} notificationStyle={notificationStyles.info}>
+            {/* Step 4-3: Any content placed between the <Notification> tags, will be passed down into the component in the "props.children" property */}
+            <p>Notification Custom Content</p>
+            <p>More Custom Content</p>
+          </Notification>
+        }
       </>
     );
   }
