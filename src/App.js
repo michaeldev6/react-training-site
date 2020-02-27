@@ -29,7 +29,21 @@ class App extends React.Component  {
     // In this case, we are creating a state whether to show or hide the notification we create in Step 4. By default it is hidden.
     this.state = {
       showNotification: false
-    }
+    };
+
+    // Step 5-3: bind "this" to the "toggleNotification" method, so when the method is passed in to be called by a child component,
+    // it will still be connected to the App component
+    this.toggleNotification = this.toggleNotification.bind(this);
+  }
+
+  // Step 5-3: "toggleNotification" method created to update the state of the "showNotification" property
+  toggleNotification() {
+    const showNotification = !this.state.showNotification;
+    // Step 5-3: To update the state, we must always call the `setState` method which is inherited from React.Component.
+    // The {showNotification} is also a shorthand way of declaring an object where the variable name that contains the value
+    // is the same as the key.
+    // Essentially, {showNotification} is the same as { showNotification: showNotification }
+    this.setState({showNotification});
   }
 
   // Step 5-1: When using class components, we MUST call the "render" method and return the HTML code to be displayed
