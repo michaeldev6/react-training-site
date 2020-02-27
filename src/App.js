@@ -56,6 +56,11 @@ class App extends React.Component  {
       <>
         {/* // step 3-1: Add properties "name" and "onButtonClick", passing a string into "name" and a function into "onButtonClick" */}
         <Header name="John Deere Training" onButtonClick={(e) => alert('Button Clicked')} />
+        {/* Step 5-4: Added a button to trigger the "toggleNotification" method when clicked */}
+        <button className="btn-primary" onClick={this.toggleNotification}>
+          {/* Step 5-4: Use appropriate text based on the visibility state of the notification */}
+          {this.state.showNotification ? 'Hide Notification' : 'Show Notification'}
+        </button>
         {/*
       Step 4-3: Added the Notification component, passing in the "ExampleNotificationHeader" component to the "header" prop.
       Also set the "notificationStyle" prop to use the "notificationStyles.info" styles.
