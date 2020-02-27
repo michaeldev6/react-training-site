@@ -36,6 +36,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
 }
 
 /* Step 2-1: Create some baseline classes to user throughout the app */
@@ -75,4 +77,9 @@ button {
   margin-bottom: 0.5rem;
   width: calc(100% + 2rem);
   margin-left: -1rem;
+}
+
+.btn-primary {
+  background-color: #367c2b;
+  color: #fff;
 }
