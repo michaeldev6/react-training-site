@@ -16,7 +16,9 @@ export class UserList extends React.Component {
     // "users" is the property that will hold the data we get back from the response. null by default
     this.state = {
       isListLoading: true,
-      users: null
+      users: null,
+      // Step 9-6: Add an error state to hold any errors that may arise from the API request
+      error: null
     }
   }
 
@@ -27,21 +29,35 @@ export class UserList extends React.Component {
 
   // Step 8-3: Create an "async" function to fetch the data and set it.
   async loadUserData() {
-    // Step 8-3: we use "await" here to wait for the "fetchUserData" to resolve and return the data, which will get stored in the "users" constant.
-    const users = await fetchUserData();
-    // Step 8-3: "setTimeout" being used here to mimic a slow API request
-    setTimeout(() => {
-      // Step 8-3: Once we get the data, update the state to store the user data and set "isListLoading" to be false.
+    // Step 9-6: To capture any error in an async/await pattern, we need to wrap the entire logic for a successful scenario in a try catch
+    try {
+      // Step 8-3: we use "await" here to wait for the "fetchUserData" to resolve and return the data, which will get stored in the "users" constant.
+      const users = await fetchUserData();
+      // Step 8-3: "setTimeout" being used here to mimic a slow API request
+      setTimeout(() => {
+        // Step 8-3: Once we get the data, update the state to store the user data and set "isListLoading" to be false.
+        this.setState({
+          isListLoading: false,
+          users,
+          error: null
+        });
+      }, 1500);
+    } catch(e) {
+      // Step 9-6: In this catch, whenever an error is triggered, we grab the Error object created and store it in state
       this.setState({
-        isListLoading: false,
-        users
-      });
-    }, 1500);
+        error: e
+      })
+    }
   }
 
 
   // Step 8-2: Because we're converting to a class component, we need to Wrap existing code and logic inside of the "render" method.
   render() {
+
+    // Step 9-6: Add logic check to see if any error has been set
+    if (!!this.state.error) {
+      throw this.state.error;
+    }
 
     // Step 8-5: Check is the list is still loading. If so, render a loading message
     if (this.state.isListLoading) {
