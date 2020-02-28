@@ -1,23 +1,15 @@
 // Step 1-3: Every component will need to import React from the 'react' library
 import React from 'react';
+import {TimeDisplay} from "./TimeDisplay";
 
-// Step 2-4: Create some javascript objects to be used as as styles for HTML components.
-// These can be moved to a separate file for all components to access. Just need to "export" them
-// keeping in mind that css properties need to be declared with camelCase
+// Step 6-5: Update the styles to accommodate the prop "buttonText"
 const specialButtonStyle = {
-  width: '1.5rem',
-  height: '1.5rem',
-  borderRadius: '50%',
-  backgroundColor: '#fff'
+  borderRadius: '0.5rem',
+  backgroundColor: '#fff',
+  padding: '0.5rem 1rem'
 };
 
-const insideButtonCircle = {
-  width: '0.5rem',
-  height: '0.5rem',
-  borderRadius: '50%',
-  backgroundColor: '#333'
-};
-
+// Step 6-5: Removing this style object as it's no longer needed at this point
 
 
 // Step 3-2: Update the functional component to have the "props" argument passed in.
@@ -33,14 +25,16 @@ export function Header(props) {
         {/* // Step 3-2: Replace hard coded text with whatever value is passed in by the "name" prop */}
         {props.name}
       </div>
+      {/* Step 6-5: Utilize the new "showTime" prop to render the "TimeDisplay" component or not */}
+      { props.showTime && <TimeDisplay /> }
       <div>
         {/*
           Step 3-2: Pass in the function from the "onButtonClick" prop to the "onClick" method on the button element.
           This should now trigger the alert that was setup in the App.js
         */}
         <button onClick={props.onButtonClick} style={specialButtonStyle}>
-          {/* step 2-4: Use the const "insideButtonCircle" to make this div inside the button into a circle */}
-          <div style={insideButtonCircle}> </div>
+          {/* Step 6-5: Instead of just showing a circle, we'll render the new prop "buttonText" here */}
+          { props.buttonText }
         </button>
       </div>
     </header>
