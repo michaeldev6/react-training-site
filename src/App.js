@@ -28,7 +28,9 @@ class App extends React.Component  {
     // Step: 5-2: React.Component has a "state" variable setup. In this component, we must define its structure and the properties in the state.
     // In this case, we are creating a state whether to show or hide the notification we create in Step 4. By default it is hidden.
     this.state = {
-      showNotification: false
+      showNotification: false,
+      // Step 6-4: Add another state, whether or not the time should be displayed. We'll set it true by default
+      showTime: true
     };
 
     // Step 5-3: bind "this" to the "toggleNotification" method, so when the method is passed in to be called by a child component,
@@ -46,6 +48,12 @@ class App extends React.Component  {
     this.setState({showNotification});
   }
 
+  // Step 6-4: Method to update the visible state of the time
+  toggleTime() {
+    const showTime = !this.state.showTime;
+    this.setState({showTime});
+  }
+
   // Step 5-1: When using class components, we MUST call the "render" method and return the HTML code to be displayed
   render() {
     return (
@@ -54,8 +62,19 @@ class App extends React.Component  {
       // The fragment tag will not get rendered.
       // Use the fragment to avoid excessive use of <div> tags just to wrap elements.
       <>
-        {/* // step 3-1: Add properties "name" and "onButtonClick", passing a string into "name" and a function into "onButtonClick" */}
-        <Header name="John Deere Training" onButtonClick={(e) => alert('Button Clicked')} />
+        {/*
+        Step 6-4: Make some updates to the Header component here.
+        We'll update the "onButtonClick" method to call the "toggleTime" method rather than displaying an alert.
+        We will also add a new property to the Header called showTime, which we'll update in the Header.js component in the next step.
+        And for a bit of extra practise, we'll update the button text to show appropriate text based on the state of the time.
+        To be update in the next step as well.
+        */}
+        <Header
+          name="John Deere Training"
+          onButtonClick={(e) => this.toggleTime()}
+          showTime={this.state.showTime}
+          buttonText={this.state.showTime ? 'Hide Time' : 'Show Time'}
+        />
         {/* Step 5-4: Added a button to trigger the "toggleNotification" method when clicked */}
         <button className="btn-primary" onClick={this.toggleNotification}>
           {/* Step 5-4: Use appropriate text based on the visibility state of the notification */}
