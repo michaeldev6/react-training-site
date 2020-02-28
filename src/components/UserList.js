@@ -20,6 +20,11 @@ export class UserList extends React.Component {
     }
   }
 
+  // Step 8-4: utilize the "componentDidMount" life cycle method to grab the data immediately when this component is loaded
+  componentDidMount() {
+    this.loadUserData();
+  }
+
   // Step 8-3: Create an "async" function to fetch the data and set it.
   async loadUserData() {
     // Step 8-3: we use "await" here to wait for the "fetchUserData" to resolve and return the data, which will get stored in the "users" constant.
