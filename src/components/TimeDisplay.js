@@ -16,6 +16,11 @@ const styles = {
 // methods as well as keeping state within this component
 export class TimeDisplay extends React.Component {
 
+  // Step 6-2: variable to hold the setInterval timer created
+  timer;
+  // Step 6-2: time between the times setInterval will trigger
+  timeInterval = 1000;
+
   constructor(props) {
     super(props);
 
@@ -23,6 +28,28 @@ export class TimeDisplay extends React.Component {
     this.state = {
       time: new Date().toLocaleTimeString()
     }
+  }
+
+  // Step 6-2: method to create the setInterval timer and call the function "updateTime" every 1000ms
+  startTimer() {
+    if (!this.timer) {
+      this.timer = setInterval(() => {
+        this.updateTime();
+      }, this.timeInterval);
+    }
+  }
+
+  // Step 6-2: stop and clear out the setInterval timer
+  stopTimer() {
+    if (!!this.timer) {
+      clearInterval(this.timer);
+    }
+  }
+
+  // Step 6-2: method to update the time and state
+  updateTime() {
+    const time = new Date().toLocaleTimeString();
+    this.setState({time});
   }
 
   // Step 6-1: Because we're using a class component, we need to call the "render" method and return HTML elements
