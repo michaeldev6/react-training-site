@@ -1,5 +1,6 @@
 import React from 'react';
-import {MOCK_USER_DATA} from "../mock-data";
+// Step 8-3: import to bring in the function that will make the API request
+import {fetchUserData} from "../mock-data";
 
 
 // Step 8-2: Since we want to utilize state and use the life cycle methods for section 8, we'll convert this functional component into a class component
@@ -18,6 +19,21 @@ export class UserList extends React.Component {
       users: null
     }
   }
+
+  // Step 8-3: Create an "async" function to fetch the data and set it.
+  async loadUserData() {
+    // Step 8-3: we use "await" here to wait for the "fetchUserData" to resolve and return the data, which will get stored in the "users" constant.
+    const users = await fetchUserData();
+    // Step 8-3: "setTimeout" being used here to mimic a slow API request
+    setTimeout(() => {
+      // Step 8-3: Once we get the data, update the state to store the user data and set "isListLoading" to be false.
+      this.setState({
+        isListLoading: false,
+        users
+      });
+    }, 1500);
+  }
+
 
   // Step 8-2: Because we're converting to a class component, we need to Wrap existing code and logic inside of the "render" method.
   render() {
