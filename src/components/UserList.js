@@ -42,8 +42,18 @@ export class UserList extends React.Component {
 
   // Step 8-2: Because we're converting to a class component, we need to Wrap existing code and logic inside of the "render" method.
   render() {
-    // Step 7-2: Import in the MOCK_USER_DATA and create a copy of it to use in this component
-    const list = MOCK_USER_DATA.slice();
+
+    // Step 8-5: Check is the list is still loading. If so, render a loading message
+    if (this.state.isListLoading) {
+      return (
+         <div>
+           Loading...
+         </div>
+      );
+    }
+
+    // Step 8-5: Update the "list" const to make a copy from the "users" state rather than the "MOCK_USER_DATA" we had before.
+    const list = this.state.users.slice();
 
     // Step 7-3: Taking the list of data, we will "map" each of the values in the list to be an HTML element, storing it in another variable, "userList"
     const userList = list.map((data) => {
