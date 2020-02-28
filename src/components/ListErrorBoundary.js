@@ -14,6 +14,15 @@ export class ListErrorBoundary extends React.Component {
     }
   }
 
+  // Step 9-2: Add the "componentDidCatch" life cycle method, which will be called when any child components throws en error
+  componentDidCatch(error, errorInfo) {
+    // Step 9-2: This method will pass these 2 parameters. We will capture them and update the state in this component
+    this.setState({
+      error,
+      errorInfo
+    });
+  }
+
   // Step 9-1: As is with any component class, need to setup the render method to return some HTML Element
   render() {
     // Step 9-1: Setup a simple place holder for now.
