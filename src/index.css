@@ -83,3 +83,24 @@ button {
   background-color: #367c2b;
   color: #fff;
 }
+
+
+/* Step 7-4: Add some styles to enhance the look of our new user list */
+.content {
+  padding: 1rem;
+}
+
+.user-list {
+  padding: 0.25rem 0.5rem;
+  background-color:rgba(0,0,0,0.2);
+  margin-top: 1rem;
+}
+
+.user {
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  border: 0.0625rem solid #367c2b;
+  background-color: rgba(255,255,255,0.5);
+  color: #333;
+  margin: 0.5rem 0;
+}

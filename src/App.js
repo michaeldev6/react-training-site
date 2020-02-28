@@ -5,6 +5,8 @@ import {Header} from "./components/Header";
 
 // Step 4-3: Import the notification component and the notificationStyles
 import {Notification, notificationStyles} from "./components/Notification";
+// Step 7-4: Import the UserList component
+import {UserList} from "./components/UserList";
 
 // Step 4-3: Sample function component to illustrate how this component can be passed into another component
 function ExampleNotificationHeader() {
@@ -89,6 +91,11 @@ class App extends React.Component  {
             <p>More Custom Content</p>
           </Notification>
         }
+        {/* Step 7-4: Wrap the UserList to add some padding around it */}
+        <div className="content">
+          {/* Step 7-4: Declare the UserList component to have it rendered beneath the notification */}
+          <UserList />
+        </div>
       </>
     );
   }
