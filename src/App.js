@@ -7,6 +7,8 @@ import {Header} from "./components/Header";
 import {Notification, notificationStyles} from "./components/Notification";
 // Step 7-4: Import the UserList component
 import {UserList} from "./components/UserList";
+// Step 9-4: Import the ListErrorBoundary component to wrap the UserList
+import {ListErrorBoundary} from "./components/ListErrorBoundary";
 
 // Step 4-3: Sample function component to illustrate how this component can be passed into another component
 function ExampleNotificationHeader() {
@@ -93,8 +95,14 @@ class App extends React.Component  {
         }
         {/* Step 7-4: Wrap the UserList to add some padding around it */}
         <div className="content">
-          {/* Step 7-4: Declare the UserList component to have it rendered beneath the notification */}
-          <UserList />
+          {/*
+          Step 9-4: Wrap the UserList component with the ListErrorBoundary component, so that the boundary catches
+          any errors coming from its children component, in this case, the UserList component
+          */}
+          <ListErrorBoundary>
+            {/* Step 7-4: Declare the UserList component to have it rendered beneath the notification */}
+            <UserList />
+          </ListErrorBoundary>
         </div>
       </>
     );
