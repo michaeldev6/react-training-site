@@ -30,10 +30,25 @@ export class TimeDisplay extends React.Component {
     }
   }
 
+  // Step 6-3: This is one of React's life cycle methods. "componentDidMount" will be called after the component gets rendered
+  componentDidMount() {
+    this.startTimer();
+  }
+
+  // Step 6-3: Another one of React's life cycle methods. "componentWillUnmount" will be called right before the component gets destroyed
+  componentWillUnmount() {
+    this.stopTimer();
+  }
+
   // Step 6-2: method to create the setInterval timer and call the function "updateTime" every 1000ms
   startTimer() {
     if (!this.timer) {
       this.timer = setInterval(() => {
+        // Step 6-3: Adding console log so we can see more clearly the life cycle methods in action
+        // When this component is created and rendered, we should see this console log get triggered every second
+        // Once this component is destroyed, this console log should no longer be triggered in the console, unless this component
+        // gets rendered again
+        console.log('Example of React life cycle methods');
         this.updateTime();
       }, this.timeInterval);
     }
