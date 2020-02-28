@@ -1,4 +1,6 @@
 import React from 'react';
+// Step 9-3: Import the Notification component and styles
+import {Notification, notificationStyles} from "./Notification";
 
 // Step 9-1: Let's setup a new class component to handle errors.
 export class ListErrorBoundary extends React.Component {
@@ -25,11 +27,24 @@ export class ListErrorBoundary extends React.Component {
 
   // Step 9-1: As is with any component class, need to setup the render method to return some HTML Element
   render() {
-    // Step 9-1: Setup a simple place holder for now.
-    return (
-      <div>
-        Error Happened
-      </div>
-    );
+
+    // Step 9-3: Do a check for any errors. If there is, render a Notification component to display the error
+    if (!!this.state.errorInfo) {
+      return (
+        // Step 9-3: Utilizing the Notification component created in section 4 and give it the styles for an alert
+        <Notification notificationStyle={notificationStyles.alert}>
+          <p>Issue loading list</p>
+          <details>
+            <summary>Click for more details</summary>
+            {/* Step 9-3:  Render out the error message and the error stack */}
+            <p>{ !!this.state.error && this.state.error.toString() }</p>
+            <p>{ this.state.errorInfo.componentStack }</p>
+          </details>
+        </Notification>
+      );
+    }
+
+    // Step 9-3: Remove placeholder and instead, if there are no errors from the children components, render them
+    return this.props.children;
   }
 }
