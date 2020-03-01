@@ -60,6 +60,19 @@ export class AddUserForm extends React.Component {
           */}
           <input type="text" onChange={this.handleNameChange} value={this.state.name} />
         </div>
+        {/* Step 10-5: Setup the HTML elements for the other input fields for email, phone and website */}
+        <div className="field-group">
+          <label>Email: </label>
+          <input type="text" onChange={this.handleEmailChange} value={this.state.email} />
+        </div>
+        <div className="field-group">
+          <label>Phone: </label>
+          <input type="text" onChange={this.handlePhoneChange} value={this.state.phone} />
+        </div>
+        <div className="field-group">
+          <label>Website: </label>
+          <input type="text" onChange={this.handleWebsiteChange} value={this.state.website} />
+        </div>
       </form>
     );
   }
