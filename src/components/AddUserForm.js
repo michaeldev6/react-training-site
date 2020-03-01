@@ -12,6 +12,17 @@ export class AddUserForm extends React.Component {
       phone: '',
       website: ''
     };
+
+    // Step 10-2: Since we'll be passing the "handleChangeName" method into the input field, we'll need to bind the reference of this component to it
+    this.handleNameChange = this.handleNameChange.bind(this);
+  }
+
+  // Step 10-2: This "handleNameChange" method will be passed in to the input field to handle any change events to the input value.
+  handleNameChange(e) {
+    // Step 10-2: Grab the value from the target, which in this case will be the input field
+    const name = e.target.value;
+    // Step 10-2: Update the state to reflect what is currently inputted into the field
+    this.setState({name});
   }
 
   // Step 10-1: Render a basic form for now.
