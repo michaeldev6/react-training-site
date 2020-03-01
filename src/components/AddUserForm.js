@@ -29,7 +29,17 @@ export class AddUserForm extends React.Component {
   render() {
     return (
       <form>
-        Form Here
+        {/* Step 10-3: Create the input field that will be associated with the name state */}
+        <div className="field-group">
+          <label>Name: </label>
+          {/*
+          Step 10-3: Setting up 2 props on the input field; "onChange" and "value"
+          We pass in the "handleNameChange" method to the "onChange" prop to update the state accordingly.
+          We set the "state.name" value into the value of the input. This is to ensure we have only 1 source of truth
+          for the current state of the values in the forms.
+          */}
+          <input type="text" onChange={this.handleNameChange} value={this.state.name} />
+        </div>
       </form>
     );
   }
