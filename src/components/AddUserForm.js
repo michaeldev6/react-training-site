@@ -19,6 +19,8 @@ export class AddUserForm extends React.Component {
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePhoneChange = this.handlePhoneChange.bind(this);
     this.handleWebsiteChange = this.handleWebsiteChange.bind(this);
+    // Step 10-8: "resetForm" will also be passed in as a method as opposed to being called. So we need to bind this component to it to retain context
+    this.resetForm = this.resetForm.bind(this);
   }
 
   // Step 10-2: This "handleNameChange" method will be passed in to the input field to handle any change events to the input value.
@@ -45,11 +47,21 @@ export class AddUserForm extends React.Component {
     this.setState({website});
   }
 
+  // Step 10-8: Add a method to clear out all the states, in turn, clearing out all the values in the input form fields
+  resetForm() {
+    this.setState({
+      name: '',
+      email: '',
+      phone: '',
+      website: ''
+    });
+  }
+
   // Step 10-1: Render a basic form for now.
   render() {
     return (
-      // Step 10-6: Add the "add-user" class to apply some styles to the form
-      <form className="add-user">
+      // Step 10-8: pass in the "resetForm" method into the "onReset" prop of the form
+      <form className="add-user" onReset={this.resetForm}>
         {/* Step 10-3: Create the input field that will be associated with the name state */}
         <div className="field-group">
           <label>Name: </label>
@@ -73,6 +85,10 @@ export class AddUserForm extends React.Component {
         <div className="field-group">
           <label>Website: </label>
           <input type="text" onChange={this.handleWebsiteChange} value={this.state.website} />
+        </div>
+        {/* Step 10-8: Add a reset type button in the form to reset the form */}
+        <div className="actions">
+          <button type="reset">Reset</button>
         </div>
       </form>
     );
