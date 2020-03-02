@@ -57,11 +57,33 @@ export class AddUserForm extends React.Component {
     });
   }
 
+  // Step 10-9: Add a method to handle when the form gets submitted.
+  // There is an event that gets triggered when a form is submitted, we need to pass that through
+  handleSubmit(e) {
+    // Step 10-9: Call the "preventDefault" method on the event to stop the default action of a form submit from happening.
+    // We do this so we can handle the submission process ourselves and not leave it to the default actions of the browser.
+    e.preventDefault();
+    // Step 10-9: Create a user object so be used in the callback function property.
+    const user = {
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      website: this.state.website,
+    };
+    // Step 10-9: Do a check to confirm that the "whenFormSubmitted" prop is defined and is a "function"
+    if (!!this.props.whenFormSubmitted && typeof this.props.whenFormSubmitted === 'function') {
+      // Step 10-9: If the prop meets all the criteria, we will trigger the method and pass in the "user" object as an argument
+      this.props.whenFormSubmitted(user);
+      // Step 10-9: After it gets triggered, we will reset and clear the form.
+      this.resetForm();
+    }
+  }
+
   // Step 10-1: Render a basic form for now.
   render() {
     return (
-      // Step 10-8: pass in the "resetForm" method into the "onReset" prop of the form
-      <form className="add-user" onReset={this.resetForm}>
+      // Step 10-9: pass in the "handleSubmit" method into the "onSubmit" prop of the form
+      <form className="add-user" onReset={this.resetForm} onSubmit={this.handleSubmit}>
         {/* Step 10-3: Create the input field that will be associated with the name state */}
         <div className="field-group">
           <label>Name: </label>
