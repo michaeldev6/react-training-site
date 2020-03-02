@@ -104,3 +104,60 @@ button {
   color: #333;
   margin: 0.5rem 0;
 }
+
+
+/*
+Step 10-7: Add some styles to the form we just created.
+Setting up some styles as well for the buttons we will eventually create in a future step
+*/
+form.add-user {
+  background-color: rgba(0,0,0,0.15);
+  border: 0.0625rem solid #999;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+form.add-user .field-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+form.add-user .field-group label {
+  min-width: 7rem;
+  margin-right: 0.5rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+}
+
+form.add-user .field-group input[type="text"] {
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 16rem;
+}
+
+form.add-user .actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+form.add-user .actions button {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+form.add-user .actions button[type="reset"] {
+  background-color: #333;
+}
+
+form.add-user .actions button[type="submit"] {
+  background-color: #367c2b;
+}

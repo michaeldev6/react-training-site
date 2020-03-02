@@ -48,7 +48,8 @@ export class AddUserForm extends React.Component {
   // Step 10-1: Render a basic form for now.
   render() {
     return (
-      <form>
+      // Step 10-6: Add the "add-user" class to apply some styles to the form
+      <form className="add-user">
         {/* Step 10-3: Create the input field that will be associated with the name state */}
         <div className="field-group">
           <label>Name: </label>
