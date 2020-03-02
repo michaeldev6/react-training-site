@@ -1,6 +1,8 @@
 import React from 'react';
 // Step 8-3: import to bring in the function that will make the API request
 import {fetchUserData} from "../mock-data";
+// Step 10-6: import AddUerForm to interact with the users state in this component
+import {AddUserForm} from "./AddUserForm";
 
 
 // Step 8-2: Since we want to utilize state and use the life cycle methods for section 8, we'll convert this functional component into a class component
@@ -89,10 +91,15 @@ export class UserList extends React.Component {
 
     // Step 7-2: Return the HTML to be rendered
     return (
-      <div className="user-list">
-        {/* Step 7-3: Render the "userList" variable here */}
-        {userList}
-      </div>
+      // Step 10-6: Let's add the AddUserForm component to the UserList component so we can see the form we are putting togher
+      // Remember the Fragment tags if we have more than 1 top level HTML element
+      <>
+        <AddUserForm/>
+        <div className="user-list">
+          {/* Step 7-3: Render the "userList" variable here */}
+          {userList}
+        </div>
+      </>
     );
   }
 }
