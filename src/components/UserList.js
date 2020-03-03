@@ -57,9 +57,20 @@ export class UserList extends React.Component {
 
   // Step 10-11: Setup a method that will be passed into the "whenFormSubmitted" prop of the "AddUserForm" component
   onFormSubmitted(user) {
-    // Step 10-11: console.log out the argument passed in to confirm it is the user object
-    console.log('User: ', user);
-    console.log('User: ', this.state.users);
+    // Step 10-12: setup the logic to take the data and add it to the existing list.
+    // Check first if the list exists
+    if (!!this.state.users) {
+      // Step 10-12: utilize the existing list length to create a new unique id
+      const id = this.state.users.length + 1;
+      // Step 10-12: merge id into existing user object and replace it
+      user = {...user, id};
+      // Step 10-12: create a copy of the existing list from the state
+      const users = this.state.users.slice();
+      // Step 10-12: add it to the beginning of the list with "unshift" Array method
+      users.unshift(user);
+      // Step 10-12: with the updated user list with the added user, update the state in this class
+      this.setState({users});
+    }
   }
 
 
