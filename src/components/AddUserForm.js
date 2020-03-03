@@ -21,6 +21,8 @@ export class AddUserForm extends React.Component {
     this.handleWebsiteChange = this.handleWebsiteChange.bind(this);
     // Step 10-8: "resetForm" will also be passed in as a method as opposed to being called. So we need to bind this component to it to retain context
     this.resetForm = this.resetForm.bind(this);
+    // Step 10-10: Because we need the handleSubmit method is referencing something in the class, we need to bind this context to it
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // Step 10-2: This "handleNameChange" method will be passed in to the input field to handle any change events to the input value.
@@ -111,6 +113,8 @@ export class AddUserForm extends React.Component {
         {/* Step 10-8: Add a reset type button in the form to reset the form */}
         <div className="actions">
           <button type="reset">Reset</button>
+          {/* Step 10-10: Add submit button to trigger the "onSubmit" function on the form */}
+          <button type="submit">Submit</button>
         </div>
       </form>
     );
