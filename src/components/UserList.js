@@ -21,7 +21,10 @@ export class UserList extends React.Component {
       users: null,
       // Step 9-6: Add an error state to hold any errors that may arise from the API request
       error: null
-    }
+    };
+
+    // Step 10-11: Because we still need to keep the context of "this" object within this method, we need to bind "this"
+    this.onFormSubmitted = this.onFormSubmitted.bind(this);
   }
 
   // Step 8-4: utilize the "componentDidMount" life cycle method to grab the data immediately when this component is loaded
@@ -50,6 +53,13 @@ export class UserList extends React.Component {
         error: e
       })
     }
+  }
+
+  // Step 10-11: Setup a method that will be passed into the "whenFormSubmitted" prop of the "AddUserForm" component
+  onFormSubmitted(user) {
+    // Step 10-11: console.log out the argument passed in to confirm it is the user object
+    console.log('User: ', user);
+    console.log('User: ', this.state.users);
   }
 
 
@@ -91,10 +101,11 @@ export class UserList extends React.Component {
 
     // Step 7-2: Return the HTML to be rendered
     return (
-      // Step 10-6: Let's add the AddUserForm component to the UserList component so we can see the form we are putting togher
+      // Step 10-6: Let's add the AddUserForm component to the UserList component so we can see the form we are putting togeher
       // Remember the Fragment tags if we have more than 1 top level HTML element
       <>
-        <AddUserForm/>
+        {/* Step 10-11: Create the "whenFormSubmitted" prop to pass in the method to be called when th form is submitted */}
+        <AddUserForm whenFormSubmitted={this.onFormSubmitted} />
         <div className="user-list">
           {/* Step 7-3: Render the "userList" variable here */}
           {userList}
