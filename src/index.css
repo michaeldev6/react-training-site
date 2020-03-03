@@ -132,11 +132,12 @@ form.add-user .field-group label {
 }
 
 form.add-user .field-group input[type="text"] {
-  border: 0;
   border-radius: 0.25rem;
   padding: 0.5rem;
   width: 100%;
   max-width: 16rem;
+  /* Step 11-1: Added transparent border so elements don't shirt around when error border is shown */
+  border: 0.0625rem solid transparent;
 }
 
 form.add-user .actions {
@@ -160,4 +161,15 @@ form.add-user .actions button[type="reset"] {
 
 form.add-user .actions button[type="submit"] {
   background-color: #367c2b;
+}
+
+/* Step 11-1: Add style rule for the label when there is an error */
+form.add-user .field-group.error label {
+  color: #be0303;
+}
+
+/* Step 11-1: Add style rule for the error group colouring the elements red */
+form.add-user .field-group.error input[type="text"] {
+  border: 0.0625rem solid #be0303;
+  background-color: #f8dadb;
 }
