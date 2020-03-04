@@ -55,6 +55,16 @@ export class AddUserForm extends React.Component {
     this.setState({website});
   }
 
+  // Step 11-3: Added function to check valid email format
+  isEmailValid(email) {
+    return email.length > 0 && validEmailRegex.test(email);
+  }
+
+  // Step 11-3: Added function to check is a name has been entered
+  isNameValid(name) {
+    return name.length > 0;
+  }
+
   // Step 10-8: Add a method to clear out all the states, in turn, clearing out all the values in the input form fields
   resetForm() {
     // Step 11-2: Update the reset state to include the 3 new state properties added, "nameHasError", "emailHasError", "formSubmitted"
@@ -98,7 +108,8 @@ export class AddUserForm extends React.Component {
       <form className="add-user" onReset={this.resetForm} onSubmit={this.handleSubmit}>
         {/* Step 10-3: Create the input field that will be associated with the name state */}
         <div className="field-group">
-          <label>Name: </label>
+          {/* Step 11-3: Adding * to the name label to indicate it is a required field */}
+          <label>Name*: </label>
           {/*
           Step 10-3: Setting up 2 props on the input field; "onChange" and "value"
           We pass in the "handleNameChange" method to the "onChange" prop to update the state accordingly.
@@ -109,7 +120,8 @@ export class AddUserForm extends React.Component {
         </div>
         {/* Step 10-5: Setup the HTML elements for the other input fields for email, phone and website */}
         <div className="field-group">
-          <label>Email: </label>
+          {/* Step 11-3: Adding * to the email label to indicate it is a required field */}
+          <label>Email*: </label>
           <input type="text" onChange={this.handleEmailChange} value={this.state.email} />
         </div>
         <div className="field-group">
