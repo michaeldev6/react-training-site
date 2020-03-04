@@ -1,4 +1,6 @@
 import React from 'react';
+// Step 11-6: Import the Notification component and notificationStyles to be used in this component
+import {Notification, notificationStyles} from './Notification';
 
 // Step 11-2: Add Regex email validator
 const validEmailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -144,6 +146,19 @@ export class AddUserForm extends React.Component {
     return (
       // Step 10-9: pass in the "handleSubmit" method into the "onSubmit" prop of the form
       <form className="add-user" onReset={this.resetForm} onSubmit={this.handleSubmit}>
+        {
+          // Step 11-6: If there is any error in the form, show a Notification component with the error styling
+          (this.state.nameHasError || this.state.emailHasError) &&
+          <div style={{marginBottom: '0.5rem'}}>
+            {/* Step 11-6: Show the Notification component with the error styling */}
+            <Notification notificationStyle={notificationStyles.error}>
+              {/* Step 11-6: If there is an error in the name indicate it through this message */}
+              {this.state.nameHasError && <p>A name must be entered</p>}
+              {/* Step 11-6: If there is an error in the email indicate it through this message */}
+              {this.state.emailHasError && <p>A valid email must be entered</p>}
+            </Notification>
+          </div>
+        }
         {/* Step 11-5: Added check if there is an error, and if so, add the error class. If not, no error class added */}
         <div className={'field-group ' + (this.state.formSubmitted && this.state.nameHasError ? ' error' : '')}>
           {/* Step 11-3: Adding * to the name label to indicate it is a required field */}
