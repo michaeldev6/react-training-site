@@ -35,14 +35,38 @@ export class AddUserForm extends React.Component {
   handleNameChange(e) {
     // Step 10-2: Grab the value from the target, which in this case will be the input field
     const name = e.target.value;
-    // Step 10-2: Update the state to reflect what is currently inputted into the field
-    this.setState({name});
+    // Step 11-5: Check first if the form has been submitted
+    if (this.state.formSubmitted) {
+      // Step 11-5: If the form has been submitted, we will constantly validate the name and update the name error state accordingly
+      const nameHasError = !this.isNameValid(name);
+      this.setState({
+        name,
+        nameHasError
+      });
+    }
+    // Step 11-5: if the form has not yet been submitted, then update the state normally for the name property
+    else {
+      // Step 10-2: Update the state to reflect what is currently inputted into the field
+      this.setState({name});
+    }
   }
 
   // Step 10-4: We'll setup the same kind of handler methods for the rest of the form fields; email, phone and website.
   handleEmailChange(e) {
     const email = e.target.value;
-    this.setState({email});
+    // Step 11-5: Check if the form is submitted. If so, validate the email on every change of value
+    if (this.state.formSubmitted) {
+      // Step 11-5: Validate email and update the emailError state accordingly
+      const emailHasError = !this.isEmailValid(email);
+      this.setState({
+        email,
+        emailHasError
+      });
+    }
+    // Step 11-5: if the form has not been submitted, then just update the email value state normally
+    else {
+      this.setState({email});
+    }
   }
 
   handlePhoneChange(e) {
@@ -120,8 +144,8 @@ export class AddUserForm extends React.Component {
     return (
       // Step 10-9: pass in the "handleSubmit" method into the "onSubmit" prop of the form
       <form className="add-user" onReset={this.resetForm} onSubmit={this.handleSubmit}>
-        {/* Step 10-3: Create the input field that will be associated with the name state */}
-        <div className="field-group">
+        {/* Step 11-5: Added check if there is an error, and if so, add the error class. If not, no error class added */}
+        <div className={'field-group ' + (this.state.formSubmitted && this.state.nameHasError ? ' error' : '')}>
           {/* Step 11-3: Adding * to the name label to indicate it is a required field */}
           <label>Name*: </label>
           {/*
@@ -132,8 +156,8 @@ export class AddUserForm extends React.Component {
           */}
           <input type="text" onChange={this.handleNameChange} value={this.state.name} />
         </div>
-        {/* Step 10-5: Setup the HTML elements for the other input fields for email, phone and website */}
-        <div className="field-group">
+        {/* Step 11-5: Added check if there is an error, and if so, add the error class. If not, no error class added */}
+        <div className={'field-group ' + (this.state.formSubmitted && this.state.emailHasError ? ' error' : '')}>
           {/* Step 11-3: Adding * to the email label to indicate it is a required field */}
           <label>Email*: </label>
           <input type="text" onChange={this.handleEmailChange} value={this.state.email} />
