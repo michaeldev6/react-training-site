@@ -104,8 +104,22 @@ export class UserList extends React.Component {
           {/* Step 7-3: Display the information. Can do optional checks to confirm if the data exists or not and render the information accordingly */}
           <div>Name: {data.name}</div>
           <div>Email: {data.email}</div>
-          <div>Phone: {data.phone}</div>
-          <div>Website: {data.website}</div>
+          {
+            // Step 11-7: Do check if there is a phone value set. If so, then show the phone value
+            !!data.phone &&
+            <>
+              <span>Phone: {data.phone}</span><br />
+            </>
+          }
+          {
+            // Step 11-7: Do check if there is a website value set. If so, then show the website value.
+            !!data.website &&
+            <>
+              <span>
+                Website: <a href={`https://${data.website}`} target="_blank" rel="noopener noreferrer">{data.website}</a>
+              </span><br />
+            </>
+          }
         </div>
       );
     });
