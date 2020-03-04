@@ -1,16 +1,22 @@
 import React from 'react';
 
+// Step 11-2: Add Regex email validator
+const validEmailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
 // Step 10-1: Because forms will need state for the values in the input fields, so we'll make our component a class component.
 export class AddUserForm extends React.Component {
   constructor(props) {
     super(props);
 
-    // Step 10-1: Setup the state for our form. We'll have 4 inputs, "name", "email", "phone" and "website"
+    // Step 11-2: Add additional states to this form for dealing with error states
     this.state = {
       name: '',
+      nameHasError: false, // Step 11-2: to indicate if there is an error on the name input
       email: '',
+      emailHasError: false, // Step 11-2: to indicate if there is an error on the email input
       phone: '',
-      website: ''
+      website: '',
+      formSubmitted: false // Step 11-2: we want to show errors only on submission. This state prop helps keep track of that
     };
 
     // Step 10-2: Since we'll be passing the "handleChangeName" method into the input field, we'll need to bind the reference of this component to it
@@ -51,11 +57,15 @@ export class AddUserForm extends React.Component {
 
   // Step 10-8: Add a method to clear out all the states, in turn, clearing out all the values in the input form fields
   resetForm() {
+    // Step 11-2: Update the reset state to include the 3 new state properties added, "nameHasError", "emailHasError", "formSubmitted"
     this.setState({
       name: '',
+      nameHasError: false,
       email: '',
+      emailHasError: false,
       phone: '',
-      website: ''
+      website: '',
+      formSubmitted: false
     });
   }
 
